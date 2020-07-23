@@ -1,0 +1,40 @@
+﻿@model Inventory_Management_System.ViewModel.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row orderForm">
+    <form asp-controller="Employee" asp-action="Create" method="post" class="form-horizontal" role="form">
+        @Html.HiddenFor(m => m.Referer)
+
+        <h3 class="col-md-offset-2">Create new Employee</h3>
+        <div class="form-group">
+            <label asp-for="Employees.Name" class="col-md-2 control-label"></label>
+            <div class="col-md-12">
+                <input asp-for="Employees.Name" class="form-control" placeholder="Enter Employee name" />
+                <span asp-validation-for="Employees.Name" class="text-danger"></span>
+            </div>
+            <label asp-for="Employees.Email" class="col-md-2 control-label"></label>
+            <div class="col-md-12">
+                <input asp-for="Employees.Email" class="form-control"  placeholder="Enter Employee Email" />
+                <span asp-validation-for="Employees.Email" class="text-danger"></span>
+            </div>
+            <label asp-for="Employees.Department" class="col-md-2 control-label"></label>
+            <div class="col-md-12">
+                <input asp-for="Employees.Department" class="form-control"  placeholder="Enter Employee Department" />
+                <span asp-validation-for="Employees.Department" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="btn-group col-md-offset-2 col-md-6">
+                <input class="btn btn-default" type="submit" value="Return" asp-controller="Employee" asp-action="List" />
+                <input class="btn btn-success" type="submit" value="Create" />
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Inventory_Management_System.Data.Model.employees>
+
+    @{
+        ViewData["Title"] = "EmployeeDetail";
+    }
+
+    <a class="btn btn-success mt-5" style="margin: 10px" asp-controller="Employee" asp-action="Create">Create new Employee</a>
+
+    <div class="row">
+        @foreach (var employee in Model)
+        {
+            @Html.PartialAsync("EmployeePartial", employee)
+        }
+    </div>

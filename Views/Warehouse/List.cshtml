@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Inventory_Management_System.ViewModel.WarehouseViewModel>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<a class="btn btn-success mt-5" style="margin: 10px" asp-controller="Warehouse" asp-action="Create">Create new warehouse</a>
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th> WarehouseId</th>
+            <th>ProductId</th>
+            <th>ProductName</th>
+            <th>warehouseName</th>
+            <th>Edit Product</th>
+            <th>Delete Product</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var warehouseVM in Model)
+        {
+        <tr>
+            <td>@warehouseVM.Warehouse.warehouseId</td>
+            <td>@warehouseVM.Warehouse.ProductId</td>
+            <td>@warehouseVM.Warehouse.ProductName</td>
+            <td>@warehouseVM.Warehouse.warehouseName</td>
+           
+           
+            <td><a class="btn btn-info" asp-area="" asp-controller="Warehouse" asp-action="Update" asp-route-id="@warehouseVM.Warehouse.warehouseId">Edit</a></td>
+            <td><a class="btn btn-danger" asp-area="" asp-controller="Warehouse" asp-action="Delete" asp-route-id="@warehouseVM.Warehouse.warehouseId">Delete</a></td>
+        </tr>
+        }
+    </tbody>
+</table>

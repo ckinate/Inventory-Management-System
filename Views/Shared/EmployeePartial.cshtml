@@ -1,0 +1,24 @@
+﻿@model Inventory_Management_System.Data.Model.employees
+
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <p>@Model.Name</p>
+            </div>
+            <div class="panel-body">
+                <h2>Book count: @Model.Inventory?.Count</h2>
+                <div class="btn-group">
+                    @if (Model.Inventory?.Count == 0)
+                    {
+                        <a class="btn btn-default" asp-area="">View Inventory list</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-info" asp-area="" asp-controller="Inventory" asp-action="List" asp-route-authorId="@Model.employeeId">View Inventory list</a>
+                    }
+                    <a class="btn btn-info" asp-area="" asp-controller="Employee" asp-action="Update" asp-route-id="@Model.employeeId">Edit</a>
+                    <a class="btn btn-danger" asp-area="" asp-controller="Employee" asp-action="Delete" asp-route-id="@Model.employeeId">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,42 @@
+﻿@model Inventory_Management_System.ViewModel.HomeViewModel
+@{
+    int availableProduct = Model.ProductInWarehouseCount - Model.InventoryCount;
+}
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Inventory management dashboard</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h5>Inventory Count</h5> 
+            </div>
+            <div class="panel-body">
+                There are <strong>@Model.InventoryCount</strong>  Inventories
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h5>Employee Count</h5>   
+            </div>
+            <div class="panel-body">
+                There are <strong> @Model.EmployeeCount</strong> Employee
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h5> Warehouse count</h5>
+            </div>
+            <div class="panel-body">
+                There are <strong> @availableProduct</strong> Products Not Capture out of <strong>@Model.ProductInWarehouseCount</strong>  Products
+            </div>
+        </div>
+    </div>
+</div>

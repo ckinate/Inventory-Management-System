@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Inventory_Management_System.Data.Model.employees>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<a class="btn btn-success mt-5" style="margin: 10px" asp-controller="Employee" asp-action="Create">Create new Employee</a>
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>EmployeeId</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Edit Employee</th>
+            <th>Delete Employee</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+        <tr>
+            <td>@employee.employeeId</td>
+            <td>@employee.Name</td>
+            <td>@employee.Email</td>
+            <td>@employee.Department</td>
+            
+            <td><a class="btn btn-info" asp-area="" asp-controller="Employee" asp-action="Update" asp-route-id="@employee.employeeId">Edit</a></td>
+            <td><a class="btn btn-danger" asp-area="" asp-controller="Employee" asp-action="Delete" asp-route-id="@employee.employeeId">Delete</a></td>
+        </tr>
+        }
+    </tbody>
+</table>

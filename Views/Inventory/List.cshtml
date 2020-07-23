@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Inventory_Management_System.Data.Model.inventoryItems>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h3>Inventory List</h3>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.inventoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.inventoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Warehouse.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
+            </td>
+            <td>
+                <a asp-action="Update" asp-route-id="@item.inventoryItemsId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.inventoryItemsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

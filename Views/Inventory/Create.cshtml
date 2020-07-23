@@ -1,0 +1,58 @@
+﻿@model Inventory_Management_System.ViewModel.InventoryViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <div class="row orderForm">
+        <form asp-controller="Inventory" asp-action="Create" method="post" class="form-horizontal" role="form">
+            <h3 class="col-md-offset-2">Create new Inventory</h3>
+
+
+            <div class="form-group">
+                <label asp-for="Inventory.Warehouse" class="col-md-10 control-label"></label>
+                <div class="col-md-12">
+                    @Html.DropDownListFor(m => m.Inventory.WarehouseId,
+                                 new SelectList(Model.Warehouses.Select(x => new { Value = x.warehouseId, Text = x.ProductName }), "Value", "Text"), "Select a Product",
+                                 htmlAttributes: new { @class = "form-control border-input" })
+                    <span asp-validation-for="Inventory.Warehouse" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Inventory.Employees" class="col-md-10 control-label"></label>
+                <div class="col-md-12">
+                    @Html.DropDownListFor(m => m.Inventory.EmployeeId,
+                                 new SelectList(Model.Employee.Select(x => new { Value = x.employeeId, Text = x.Name }), "Value", "Text"), "Select a Employee",
+                                 htmlAttributes: new { @class = "form-control border-input" })
+                    <span asp-validation-for="Inventory.Employees" class="text-danger"></span>
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="Inventory.inventoryName" class="col-md-10 control-label"></label>
+                <div class="col-md-12">
+                    <input asp-for="Inventory.inventoryName" class="form-control" placeholder="Enter Inventory Title" />
+                    <span asp-validation-for="Inventory.inventoryName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="btn-group col-md-offset-2 col-md-6">
+                    <input class="btn btn-default" type="submit" value="Return" asp-controller="Inventory" asp-action="List" />
+                    <input class="btn btn-success" type="submit" value="Create" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="form-group m-auto">
+        <div class="col-md-8 ">
+            <a class="btn btn-success" style="width:100%" asp-controller="Warehouse" asp-action="Create">Create a Stock Product In Warehouse</a>
+        </div>
+    </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
